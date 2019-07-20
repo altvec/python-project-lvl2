@@ -3,8 +3,6 @@
 
 """Comparator functions."""
 
-import json
-
 
 def diff(file1, file2):
     """Return diff between two files."""
@@ -24,5 +22,17 @@ def diff(file1, file2):
         if key not in file1:
             diff['+ {key}'.format(key=key)] = file2[key]
 
-    print(''.join(json.dumps(diff, indent=2).split('"')))
+    print_diff(diff)
     return diff
+
+
+def print_diff(diff_data):
+    """Print difference."""
+    print('{')
+    for item_key, item_value in diff_data.items():
+        if item_value is True:
+            item_value = 'true'
+        if item_value is False:
+            item_value = 'false'
+        print('  {key}: {value}'.format(key=item_key, value=item_value))
+    print('}')
