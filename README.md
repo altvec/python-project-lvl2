@@ -5,3 +5,7 @@
 [![Build Status](https://travis-ci.org/altvec/python-project-lvl2.svg?branch=master)](https://travis-ci.org/altvec/python-project-lvl2)
 
 CLI utility for finding differences between configuration files.
+
+## Comparing flat JSON files
+
+[![asciicast](https://asciinema.org/a/RVRBngPvXlf1u8i8FOuaQtMoq.svg)](https://asciinema.org/a/RVRBngPvXlf1u8i8FOuaQtMoq)
