@@ -9,3 +9,7 @@ CLI utility for finding differences between configuration files.
 ## Comparing flat JSON files
 
 [![asciicast](https://asciinema.org/a/RVRBngPvXlf1u8i8FOuaQtMoq.svg)](https://asciinema.org/a/RVRBngPvXlf1u8i8FOuaQtMoq)
+
+## Comparing flat YAML files
+
+[![asciicast](https://asciinema.org/a/t4BrhVO9DQx6X05WHszkYstvJ.svg)](https://asciinema.org/a/t4BrhVO9DQx6X05WHszkYstvJ)
