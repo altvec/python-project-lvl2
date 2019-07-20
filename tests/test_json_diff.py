@@ -25,9 +25,9 @@ class TestJson(unittest.TestCase):
         result = diff(data1, data2)
         expect = {
             '  host': 'hexlet.io',
-            '- timeout': '50',
-            '+ timeout': '20',
-            '- proxy': '123.234.53.22',
-            '+ verbose': 'true'
+            '+ timeout': '50',
+            '- timeout': '20',
+            '+ proxy': '123.234.53.22',
+            '- verbose': 'true'
         }
         self.assertEqual(sorted(json.dumps(result)), sorted(json.dumps(expect)))
