@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "altvec_gendiff"
-version = "0.2.0"
+version = "0.3.0"
 description = "Generate diff between two files"
 authors = ["altvec <me@sergeykalistratov.com>"]
 license = "MIT"
@@ -13,6 +13,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.6"
+pyyaml = "^5.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.4"
