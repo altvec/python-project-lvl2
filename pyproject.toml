@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "altvec_gendiff"
-version = "0.1.0"
+version = "0.2.0"
 description = "Generate diff between two files"
 authors = ["altvec <me@sergeykalistratov.com>"]
 license = "MIT"
