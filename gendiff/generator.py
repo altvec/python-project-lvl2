@@ -4,6 +4,7 @@
 """Generator functions."""
 
 import json
+
 import yaml
 
 from gendiff.comparator import diff
@@ -21,7 +22,7 @@ def parse_input(file_data, file_type):
     """Parse input data into appropriate format."""
     mapping = {
         'json': lambda file_data: json.loads(file_data),
-        'yaml': lambda file_data: yaml.load(file_data, Loader=yaml.SafeLoader)
+        'yaml': lambda file_data: yaml.load(file_data, Loader=yaml.SafeLoader),
     }
     return mapping[file_type](file_data)
 
