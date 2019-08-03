@@ -14,45 +14,39 @@ def _get_changes(ast, depth=1):
     res = []
     for element in ast.values():
         if element['type'] == 'parent':
-            childs = _get_changes(element['child'], depth + 2)
             res.append('  {indent}{name}: {{\n{childs}\n  {indent}}}'.format(
                 indent=indent,
                 name=element['name'],
-                childs=childs,
+                childs=_get_changes(element['child'], depth + 2),
             ))
         if element['type'] == 'added':
-            prop_value = _get_value(element['value'], depth)
             res.append('{indent}+ {name}: {value}'.format(
                 indent=indent,
                 name=element['key'],
-                value=prop_value,
+                value=_get_value(element['value'], depth),
             ))
         if element['type'] == 'removed':
-            prop_value = _get_value(element['value'], depth)
             res.append('{indent}- {name}: {value}'.format(
                 indent=indent,
                 name=element['key'],
-                value=prop_value,
+                value=_get_value(element['value'], depth),
             ))
         if element['type'] == 'unchanged':
-            prop_value = _get_value(element['value'], depth)
             res.append('  {indent}{name}: {value}'.format(
                 indent=indent,
                 name=element['key'],
-                value=prop_value,
+                value=_get_value(element['value'], depth),
             ))
         if element['type'] == 'changed':
-            new_value = _get_value(element['new_value'], depth)
-            old_value = _get_value(element['old_value'], depth)
             res.append('{indent}+ {name}: {value}'.format(
                 indent=indent,
                 name=element['key'],
-                value=new_value,
+                value=_get_value(element['new_value'], depth),
             ))
             res.append('{indent}- {name}: {value}'.format(
                 indent=indent,
                 name=element['key'],
-                value=old_value,
+                value=_get_value(element['old_value'], depth),
             ))
     return '\n'.join(res)
 
