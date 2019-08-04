@@ -25,15 +25,15 @@ def test1_simple_string():
 
 
 def test2_simple_plain():
-    # expected = (
-    #     "Property 'proxy' was removed\n"
-    #     "Property 'timeout' was changed. From '50' to '20'\n"
-    #     "Property 'verbose' was added with value: 'true'"
-    # )
-    # actual = generate_diff('./tests/fixtures/simple_before.json',
-    #                        './tests/fixtures/simple_after.json',
-    #                        'plain')
-    # assert actual == expected
+    expected = (
+        "Property 'proxy' was removed\n"
+        "Property 'timeout' was changed. From '50' to '20'\n"
+        "Property 'verbose' was added with value: 'true'"
+    )
+    actual = generate_diff('./tests/fixtures/simple_before.json',
+                           './tests/fixtures/simple_after.json',
+                           'plain')
+    assert actual == expected
     pass
 
 
