@@ -14,4 +14,6 @@ def render(file_format, ast):
         'plain': render_plain,
         'string': render_string,
     }
+    if file_format not in mapping:
+        return 'Unsupported formatter'
     return mapping[file_format](ast)
