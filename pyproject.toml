@@ -1,14 +1,15 @@
 [tool.poetry]
 name = "altvec_gendiff"
-version = "0.3.0"
-description = "Generate diff between two files"
+version = "0.3.1"
+description = "Show diff between two files"
 authors = ["altvec <me@sergeykalistratov.com>"]
 license = "MIT"
 packages = [
     { include = "gendiff" },
 ]
 classifiers = [
-    "Topic :: Education"
+    "Topic :: Education",
+    "Programming Language :: Python :: 3"
 ]
 
 [tool.poetry.dependencies]
