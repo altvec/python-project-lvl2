@@ -2,6 +2,8 @@
 
 """JSON-like string render functions."""
 
+from gendiff.constants import ADDED, CHANGED, REMOVED, UNCHANGED
+
 
 def render_string(ast):
     """Render pseudo JSON as string."""
@@ -13,41 +15,43 @@ def _get_changes(ast, depth=1):
     indent = '  ' * depth
     res = []
     for element in ast.values():
-        if element['type'] == 'parent':
-            res.append('  {indent}{name}: {{\n{childs}\n  {indent}}}'.format(
+        element_type = element['type']
+        if element_type == 'parent':
+            change = '  {indent}{name}: {{\n{childs}\n  {indent}}}'.format(
                 indent=indent,
                 name=element['name'],
                 childs=_get_changes(element['child'], depth + 2),
-            ))
-        if element['type'] == 'added':
-            res.append('{indent}+ {name}: {value}'.format(
+            )
+        if element_type == ADDED:
+            change = '{indent}+ {name}: {value}'.format(
                 indent=indent,
                 name=element['key'],
                 value=_get_value(element['value'], depth),
-            ))
-        if element['type'] == 'removed':
-            res.append('{indent}- {name}: {value}'.format(
+            )
+        if element_type == REMOVED:
+            change = '{indent}- {name}: {value}'.format(
                 indent=indent,
                 name=element['key'],
                 value=_get_value(element['value'], depth),
-            ))
-        if element['type'] == 'unchanged':
-            res.append('  {indent}{name}: {value}'.format(
+            )
+        if element_type == UNCHANGED:
+            change = '  {indent}{name}: {value}'.format(
                 indent=indent,
                 name=element['key'],
                 value=_get_value(element['value'], depth),
-            ))
-        if element['type'] == 'changed':
-            res.append('{indent}+ {name}: {value}'.format(
+            )
+        if element_type == CHANGED:
+            change = '{indent}+ {name}: {value}'.format(
                 indent=indent,
                 name=element['key'],
                 value=_get_value(element['new_value'], depth),
-            ))
-            res.append('{indent}- {name}: {value}'.format(
+            )
+            change += '\n{indent}- {name}: {value}'.format(
                 indent=indent,
                 name=element['key'],
                 value=_get_value(element['old_value'], depth),
-            ))
+            )
+        res.append(change)
     return '\n'.join(res)
 
 

@@ -12,7 +12,6 @@ def main():
     """Arguments parser."""
     parser = argparse.ArgumentParser(
         prog='gendiff',
-        usage='%(prog)s [-h] [-f FORMAT] first_file second_file',
         description='Generate diff',
     )
     parser.add_argument(

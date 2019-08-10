@@ -2,28 +2,31 @@
 
 """Plain render functions."""
 
+from gendiff.constants import ADDED, CHANGED, REMOVED
+
 
 def render_plain(ast, parent=None):
     """Render plain text."""
     changes = [
         _get_changes(element, parent) for element in ast.values()
     ]
-    return '\n'.join(filter(lambda element: element is not None, changes))
+    return '\n'.join(filter(bool, changes))
 
 
 def _get_changes(element, parent=None):
-    if element['type'] == 'parent':
+    element_type = element['type']
+    if element_type == 'parent':
         return render_plain(element['child'], element['name'])
-    if element['type'] == 'removed':
+    if element_type == REMOVED:
         return "Property '{prop}' was removed".format(
             prop=_get_property(element, parent),
         )
-    if element['type'] == 'added':
+    if element_type == ADDED:
         return "Property '{prop}' was added with value: '{value}'".format(
             prop=_get_property(element, parent),
             value=_get_value(element['value']),
         )
-    if element['type'] == 'changed':
+    if element_type == CHANGED:
         return "Property '{prop}' was changed. From '{old}' to '{new}'".format(
             prop=_get_property(element, parent),
             old=_get_value(element['old_value']),

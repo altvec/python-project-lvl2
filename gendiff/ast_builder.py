@@ -6,12 +6,12 @@
 def build_ast(file1, file2):
     """Build AST."""
     keys = set(file1.keys()) | set(file2.keys())
-    ast = {key: gen_types(key, file1, file2) for key in sorted(keys)}
+    ast = {key: gen_nodes(key, file1, file2) for key in sorted(keys)}
     return ast
 
 
-def gen_types(key, file1, file2):
-    """Generate types for keys."""
+def gen_nodes(key, file1, file2):
+    """Generate tree nodes."""
     if key not in file1:
         return {
             'type': 'added',
