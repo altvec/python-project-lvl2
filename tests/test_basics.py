@@ -3,8 +3,6 @@
 """Basic tests."""
 
 
-import pytest
-
 from gendiff.generator import generate_diff
 
 
