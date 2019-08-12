@@ -3,43 +3,47 @@
 """AST building functions."""
 
 
-def build_ast(file1, file2):
+from gendiff.constants import ADDED, CHANGED, REMOVED, UNCHANGED
+
+
+def build_ast(before, after):
     """Build AST."""
-    keys = set(file1.keys()) | set(file2.keys())
-    ast = {key: gen_nodes(key, file1, file2) for key in sorted(keys)}
+    keys = set(before.keys()) | set(after.keys())
+    ast = {key: gen_nodes(key, before, after) for key in sorted(keys)}
     return ast
 
 
-def gen_nodes(key, file1, file2):
+def gen_nodes(key, before, after):
     """Generate tree nodes."""
-    if key not in file1:
-        return {
-            'type': 'added',
+    if key not in before:
+        node = {
+            'type': ADDED,
             'key': key,
-            'value': file2[key],
+            'value': after[key],
         }
-    if key not in file2:
-        return {
-            'type': 'removed',
+    elif key not in after:
+        node = {
+            'type': REMOVED,
             'key': key,
-            'value': file1[key],
+            'value': before[key],
         }
-    if isinstance(file1[key], dict) and isinstance(file2[key], dict):
-        return {
+    elif isinstance(before[key], dict) and isinstance(after[key], dict):
+        node = {
             'type': 'parent',
             'name': key,
-            'child': build_ast(file1[key], file2[key]),
+            'child': build_ast(before[key], after[key]),
         }
-    if file1[key] == file2[key]:
-        return {
-            'type': 'unchanged',
+    elif before[key] == after[key]:
+        node = {
+            'type': UNCHANGED,
             'key': key,
-            'value': file1[key],
+            'value': before[key],
         }
-    if file1[key] != file2[key]:
-        return {
-            'type': 'changed',
+    elif before[key] != after[key]:
+        node = {
+            'type': CHANGED,
             'key': key,
-            'old_value': file1[key],
-            'new_value': file2[key],
+            'old_value': before[key],
+            'new_value': after[key],
         }
+    return node
