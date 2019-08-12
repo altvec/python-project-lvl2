@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-
 """Expected results constants."""
-
 
 EXPECTED_SIMPLE_STRING = '''{
     host: hexlet.io
@@ -12,11 +10,9 @@ EXPECTED_SIMPLE_STRING = '''{
   + verbose: true
 }'''
 
-
 EXPECTED_SIMPLE_PLAIN = '''Property 'proxy' was removed
 Property 'timeout' was changed. From '50' to '20'
 Property 'verbose' was added with value: 'true\''''
-
 
 EXPECTED_SIMPLE_JSON = '''{
   "host": {
@@ -38,7 +34,7 @@ EXPECTED_SIMPLE_JSON = '''{
   "verbose": {
     "type": "added",
     "key": "verbose",
-    "value": true
+    "value": "true"
   }
 }'''
 
@@ -94,7 +90,7 @@ EXPECTED_COMPLEX_JSON = '''{
       "setting3": {
         "type": "unchanged",
         "key": "setting3",
-        "value": true
+        "value": "true"
       },
       "setting4": {
         "type": "added",

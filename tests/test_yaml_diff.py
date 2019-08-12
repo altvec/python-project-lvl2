@@ -2,7 +2,6 @@
 
 """YAML files diff test."""
 
-
 from gendiff.generator import generate_diff
 from tests.expected_results import EXPECTED_SIMPLE_STRING,\
     EXPECTED_SIMPLE_PLAIN,\

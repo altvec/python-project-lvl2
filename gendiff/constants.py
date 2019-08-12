@@ -2,7 +2,6 @@
 
 """Common constants."""
 
-
 ADDED = 'added'
 REMOVED = 'removed'
 CHANGED = 'changed'

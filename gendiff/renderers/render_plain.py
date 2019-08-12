@@ -35,13 +35,7 @@ def _get_changes(element, parent=None):
 
 
 def _get_value(prop_value):
-    if prop_value is True:
-        return 'true'
-    if prop_value is False:
-        return 'false'
-    if isinstance(prop_value, dict):
-        return 'complex value'
-    return prop_value
+    return 'complex value' if isinstance(prop_value, dict) else prop_value
 
 
 def _get_property(element, parent):

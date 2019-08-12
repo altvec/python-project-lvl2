@@ -2,13 +2,12 @@
 
 """AST building functions."""
 
-
 from gendiff.constants import ADDED, CHANGED, REMOVED, UNCHANGED
 
 
 def build_ast(before, after):
     """Build AST."""
-    keys = set(before.keys()) | set(after.keys())
+    keys = list(before.keys() | after.keys())
     ast = {key: gen_node(key, before, after) for key in sorted(keys)}
     return ast
 
@@ -19,13 +18,13 @@ def gen_node(key, before, after):
         node = {
             'type': ADDED,
             'key': key,
-            'value': after[key],
+            'value': _get_value_type(after[key]),
         }
     elif key not in after:
         node = {
             'type': REMOVED,
             'key': key,
-            'value': before[key],
+            'value': _get_value_type(before[key]),
         }
     elif isinstance(before[key], dict) and isinstance(after[key], dict):
         node = {
@@ -37,13 +36,21 @@ def gen_node(key, before, after):
         node = {
             'type': UNCHANGED,
             'key': key,
-            'value': before[key],
+            'value': _get_value_type(before[key]),
         }
     elif before[key] != after[key]:
         node = {
             'type': CHANGED,
             'key': key,
-            'old_value': before[key],
-            'new_value': after[key],
+            'old_value': _get_value_type(before[key]),
+            'new_value': _get_value_type(after[key]),
         }
     return node
+
+
+def _get_value_type(elem_value):
+    if elem_value is True:
+        return 'true'
+    if elem_value is False:
+        return 'false'
+    return elem_value

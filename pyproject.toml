@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "altvec_gendiff"
-version = "0.3.1"
+version = "0.3.2"
 description = "Show diff between two files"
 authors = ["altvec <me@sergeykalistratov.com>"]
 license = "MIT"

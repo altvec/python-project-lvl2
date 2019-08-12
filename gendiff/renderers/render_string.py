@@ -56,10 +56,6 @@ def _get_changes(ast, depth=1):
 
 
 def _get_value(element, depth):
-    if element is True:
-        return 'true'
-    if element is False:
-        return 'false'
     if isinstance(element, dict):
         return _render_array(element, depth)
     return element
