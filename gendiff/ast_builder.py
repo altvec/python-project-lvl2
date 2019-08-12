@@ -14,36 +14,38 @@ def build_ast(before, after):
 
 def gen_node(key, before, after):
     """Generate tree nodes."""
+    after_value = after.get(key)
+    before_value = before.get(key)
     if key not in before:
         node = {
             'type': ADDED,
             'key': key,
-            'value': _get_value_type(after[key]),
+            'value': _get_value_type(after_value),
         }
     elif key not in after:
         node = {
             'type': REMOVED,
             'key': key,
-            'value': _get_value_type(before[key]),
+            'value': _get_value_type(before_value),
         }
-    elif isinstance(before[key], dict) and isinstance(after[key], dict):
+    elif isinstance(before_value, dict) and isinstance(after_value, dict):
         node = {
             'type': 'parent',
             'name': key,
-            'child': build_ast(before[key], after[key]),
+            'child': build_ast(before_value, after_value),
         }
-    elif before[key] == after[key]:
+    elif before_value == after_value:
         node = {
             'type': UNCHANGED,
             'key': key,
-            'value': _get_value_type(before[key]),
+            'value': _get_value_type(before_value),
         }
-    elif before[key] != after[key]:
+    elif before_value != after_value:
         node = {
             'type': CHANGED,
             'key': key,
-            'old_value': _get_value_type(before[key]),
-            'new_value': _get_value_type(after[key]),
+            'old_value': _get_value_type(before_value),
+            'new_value': _get_value_type(after_value),
         }
     return node
 
