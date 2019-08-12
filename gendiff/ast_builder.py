@@ -9,11 +9,11 @@ from gendiff.constants import ADDED, CHANGED, REMOVED, UNCHANGED
 def build_ast(before, after):
     """Build AST."""
     keys = set(before.keys()) | set(after.keys())
-    ast = {key: gen_nodes(key, before, after) for key in sorted(keys)}
+    ast = {key: gen_node(key, before, after) for key in sorted(keys)}
     return ast
 
 
-def gen_nodes(key, before, after):
+def gen_node(key, before, after):
     """Generate tree nodes."""
     if key not in before:
         node = {

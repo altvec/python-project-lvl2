@@ -1,36 +1,14 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """Gendiff script."""
 
-import argparse
-
+from gendiff.cli import args
 from gendiff.generator import generate_diff
 
 
 def main():
-    """Arguments parser."""
-    parser = argparse.ArgumentParser(
-        prog='gendiff',
-        description='Generate diff',
-    )
-    parser.add_argument(
-        'first_file',
-        metavar='first_file',
-        type=str,
-    )
-    parser.add_argument(
-        'second_file',
-        metavar='second_file',
-        type=str,
-    )
-    parser.add_argument(
-        '-f',
-        '--format',
-        action='store',
-        help='set format of output',
-    )
-    args = parser.parse_args()
+    """Print diff between two files."""
     print(generate_diff(args.first_file, args.second_file, args.format))
 
 
