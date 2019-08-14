@@ -2,7 +2,7 @@
 
 """AST building functions."""
 
-from gendiff.constants import ADDED, CHANGED, REMOVED, PARENT, UNCHANGED
+from gendiff.constants import ADDED, CHANGED, PARENT, REMOVED, UNCHANGED
 
 
 def build_ast(before, after):
