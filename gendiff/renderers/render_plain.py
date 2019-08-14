@@ -2,7 +2,7 @@
 
 """Plain render functions."""
 
-from gendiff.constants import ADDED, CHANGED, REMOVED
+from gendiff.constants import ADDED, CHANGED, PARENT, REMOVED
 
 
 def render_plain(ast, parent=None):
@@ -15,7 +15,7 @@ def render_plain(ast, parent=None):
 
 def _get_changes(element, parent=None):
     element_type = element['type']
-    if element_type == 'parent':
+    if element_type == PARENT:
         return render_plain(element['child'], element['name'])
     if element_type == REMOVED:
         return "Property '{prop}' was removed".format(

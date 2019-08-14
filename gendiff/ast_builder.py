@@ -2,7 +2,7 @@
 
 """AST building functions."""
 
-from gendiff.constants import ADDED, CHANGED, REMOVED, UNCHANGED
+from gendiff.constants import ADDED, CHANGED, REMOVED, PARENT, UNCHANGED
 
 
 def build_ast(before, after):
@@ -16,13 +16,13 @@ def gen_node(key, before, after):
     """Generate tree nodes."""
     after_value = after.get(key)
     before_value = before.get(key)
-    if key not in before:
+    if before_value is None:
         node = {
             'type': ADDED,
             'key': key,
             'value': _get_value_type(after_value),
         }
-    elif key not in after:
+    elif after_value is None:
         node = {
             'type': REMOVED,
             'key': key,
@@ -30,7 +30,7 @@ def gen_node(key, before, after):
         }
     elif isinstance(before_value, dict) and isinstance(after_value, dict):
         node = {
-            'type': 'parent',
+            'type': PARENT,
             'name': key,
             'child': build_ast(before_value, after_value),
         }
