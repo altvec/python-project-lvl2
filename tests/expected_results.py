@@ -2,7 +2,7 @@
 
 """Expected results constants."""
 
-EXPECTED_SIMPLE_STRING = '''{
+SIMPLE_STRING = '''{
     host: hexlet.io
   - proxy: 123.234.53.22
   + timeout: 20
@@ -10,11 +10,11 @@ EXPECTED_SIMPLE_STRING = '''{
   + verbose: true
 }'''
 
-EXPECTED_SIMPLE_PLAIN = '''Property 'proxy' was removed
+SIMPLE_PLAIN = '''Property 'proxy' was removed
 Property 'timeout' was changed. From '50' to '20'
 Property 'verbose' was added with value: 'true\''''
 
-EXPECTED_SIMPLE_JSON = '''{
+SIMPLE_JSON = '''{
   "host": {
     "type": "unchanged",
     "key": "host",
@@ -38,7 +38,7 @@ EXPECTED_SIMPLE_JSON = '''{
   }
 }'''
 
-EXPECTED_COMPLEX_STRING = '''{
+COMPLEX_STRING = '''{
     common: {
         setting1: Value 1
       - setting2: 200
@@ -64,7 +64,7 @@ EXPECTED_COMPLEX_STRING = '''{
     }
 }'''
 
-EXPECTED_COMPLEX_PLAIN = '''Property 'common.setting2' was removed
+COMPLEX_PLAIN = '''Property 'common.setting2' was removed
 Property 'common.setting4' was added with value: 'blah blah'
 Property 'common.setting5' was added with value: 'complex value'
 Property 'common.setting6' was removed
@@ -72,7 +72,7 @@ Property 'group1.baz' was changed. From 'bas' to 'bars'
 Property 'group2' was removed
 Property 'group3' was added with value: 'complex value\''''
 
-EXPECTED_COMPLEX_JSON = '''{
+COMPLEX_JSON = '''{
   "common": {
     "type": "parent",
     "name": "common",
