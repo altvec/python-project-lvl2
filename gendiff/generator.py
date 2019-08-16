@@ -2,12 +2,10 @@
 
 """Generator functions."""
 
-import json
 import os
 
-import yaml
-
 from gendiff.ast_builder import build_ast
+from gendiff.input_parser import parser
 from gendiff.renderers.render import render
 
 
@@ -17,15 +15,6 @@ def read_file(file_name):
         file_type = os.path.splitext(file_name)[-1]
         file_data = file_object.read()
         return parser(file_data, file_type)
-
-
-def parser(file_data, file_type):
-    """Parse input data into appropriate format."""
-    mapping = {
-        '.json': json.loads,
-        '.yaml': lambda file_data: yaml.load(file_data, Loader=yaml.SafeLoader),
-    }
-    return mapping[file_type](file_data)
 
 
 def generate_diff(first_file, second_file, output_format):

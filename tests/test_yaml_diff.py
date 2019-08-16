@@ -3,7 +3,7 @@
 """YAML files diff test."""
 
 from gendiff.generator import generate_diff
-import tests.expected_results as expected
+import tests.expected as expected
 
 
 def test1_simple_string():

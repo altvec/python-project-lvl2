@@ -2,7 +2,7 @@
 
 """JSON-like string render functions."""
 
-from gendiff.constants import ADDED, CHANGED, REMOVED, UNCHANGED
+from gendiff.constants import ADDED, CHANGED, PARENT, REMOVED, UNCHANGED
 
 
 def render_string(ast):
@@ -16,7 +16,7 @@ def _get_changes(ast, depth=1):
     res = []
     for element in ast.values():
         element_type = element['type']
-        if element_type == 'parent':
+        if element_type == PARENT:
             change = '  {indent}{name}: {{\n{childs}\n  {indent}}}'.format(
                 indent=indent,
                 name=element['name'],
