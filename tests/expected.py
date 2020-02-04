@@ -16,24 +16,20 @@ Property 'verbose' was added with value: 'true\''''
 
 SIMPLE_JSON = '''{
   "host": {
-    "type": "unchanged",
-    "key": "host",
+    "type": " ",
     "value": "hexlet.io"
   },
   "proxy": {
-    "type": "removed",
-    "key": "proxy",
+    "type": "-",
     "value": "123.234.53.22"
   },
   "timeout": {
     "type": "changed",
-    "key": "timeout",
     "old_value": 50,
     "new_value": 20
   },
   "verbose": {
-    "type": "added",
-    "key": "verbose",
+    "type": "+",
     "value": "true"
   }
 }'''
@@ -74,39 +70,32 @@ Property 'group3' was added with value: 'complex value\''''
 
 COMPLEX_JSON = '''{
   "common": {
-    "type": "parent",
-    "name": "common",
-    "child": {
+    "type": "nested",
+    "value": {
       "setting1": {
-        "type": "unchanged",
-        "key": "setting1",
+        "type": " ",
         "value": "Value 1"
       },
       "setting2": {
-        "type": "removed",
-        "key": "setting2",
+        "type": "-",
         "value": "200"
       },
       "setting3": {
-        "type": "unchanged",
-        "key": "setting3",
+        "type": " ",
         "value": "true"
       },
       "setting4": {
-        "type": "added",
-        "key": "setting4",
+        "type": "+",
         "value": "blah blah"
       },
       "setting5": {
-        "type": "added",
-        "key": "setting5",
+        "type": "+",
         "value": {
           "key5": "value5"
         }
       },
       "setting6": {
-        "type": "removed",
-        "key": "setting6",
+        "type": "-",
         "value": {
           "key": "value"
         }
@@ -114,32 +103,27 @@ COMPLEX_JSON = '''{
     }
   },
   "group1": {
-    "type": "parent",
-    "name": "group1",
-    "child": {
+    "type": "nested",
+    "value": {
       "baz": {
         "type": "changed",
-        "key": "baz",
         "old_value": "bas",
         "new_value": "bars"
       },
       "foo": {
-        "type": "unchanged",
-        "key": "foo",
+        "type": " ",
         "value": "bar"
       }
     }
   },
   "group2": {
-    "type": "removed",
-    "key": "group2",
+    "type": "-",
     "value": {
       "abc": "12345"
     }
   },
   "group3": {
-    "type": "added",
-    "key": "group3",
+    "type": "+",
     "value": {
       "fee": "100500"
     }
