@@ -2,8 +2,11 @@
 
 """Common constants."""
 
-ADDED = 'added'
-REMOVED = 'removed'
-PARENT = 'parent'
+INDENT = '  '
+ADDED = '+'
+REMOVED = '-'
+NESTED = 'nested'
 CHANGED = 'changed'
-UNCHANGED = 'unchanged'
+UNCHANGED = ' '
+SIMPLE = 'simple'
+COMPLEX = 'complex value'

@@ -2,7 +2,7 @@
 
 """AST building functions."""
 
-from gendiff.constants import ADDED, CHANGED, PARENT, REMOVED, UNCHANGED
+from gendiff.constants import ADDED, CHANGED, NESTED, REMOVED, UNCHANGED
 
 
 def build_ast(before, after):
@@ -19,31 +19,26 @@ def gen_node(key, before, after):
     if before_value is None:
         node = {
             'type': ADDED,
-            'key': key,
             'value': _get_value_type(after_value),
         }
     elif after_value is None:
         node = {
             'type': REMOVED,
-            'key': key,
             'value': _get_value_type(before_value),
         }
     elif isinstance(before_value, dict) and isinstance(after_value, dict):
         node = {
-            'type': PARENT,
-            'name': key,
-            'child': build_ast(before_value, after_value),
+            'type': NESTED,
+            'value': build_ast(before_value, after_value),
         }
     elif before_value == after_value:
         node = {
             'type': UNCHANGED,
-            'key': key,
             'value': _get_value_type(before_value),
         }
     elif before_value != after_value:
         node = {
             'type': CHANGED,
-            'key': key,
             'old_value': _get_value_type(before_value),
             'new_value': _get_value_type(after_value),
         }
