@@ -23,5 +23,4 @@ def generate_diff(first_file, second_file, output_format):
         output_format = 'plain'
     first, second = read_file(first_file), read_file(second_file)
     ast = build_ast(first, second)
-    diff = render(output_format, ast)
-    return diff
+    return render(output_format, ast)
