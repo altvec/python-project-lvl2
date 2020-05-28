@@ -18,7 +18,7 @@ pyyaml = "^5.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.4"
-wemake-python-styleguide = "^0.8.1"
+wemake-python-styleguide = "^0.14.0"
 flake8 = "^3.7"
 pydocstyle = "<4"
 coverage = "^5.1"
