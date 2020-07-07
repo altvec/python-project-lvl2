@@ -21,7 +21,7 @@ pytest = "^5.4"
 wemake-python-styleguide = "^0.14.0"
 flake8 = "^3.8"
 pydocstyle = "<6"
-coverage = "^5.1"
+coverage = "^5.2"
 pytest-cov = "^2.10.0"
 
 [tool.poetry.scripts]
