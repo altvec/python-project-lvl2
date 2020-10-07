@@ -3,7 +3,7 @@ env:
     - CC_TEST_REPORTER_ID=59b680bce078131d4b483a68d0db6014cf64a1f25f4e2f6a3b1e0d0417fe34c6
 
 language: python
-python: 3.9
+python: 3.8
 
 install: make
 
