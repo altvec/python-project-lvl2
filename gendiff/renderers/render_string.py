@@ -20,26 +20,16 @@ def render_string(ast, depth=1):
         item_type = node_value.get('type')
         item_value = node_value.get('value')
         if item_type == NESTED:
-            diff.append('{indent}{state} {key}: {{'.format(
-                indent=indent,
-                state=UNCHANGED,
-                key=node_key,
-            ))
-            diff.append(render_string(item_value, depth + 2))
-            diff.append('{indent}}}'.format(indent=indent + INDENT))
+            diff.extend([
+                f'{indent}{UNCHANGED} {node_key}: {{',
+                render_string(item_value, depth + 2),
+                f'{indent + INDENT}}}',
+            ])
         elif item_type == CHANGED:
-            diff.append('{indent}{state} {key}: {value}'.format(
-                indent=indent,
-                state=ADDED,
-                key=node_key,
-                value=node_value.get('new_value'),
-            ))
-            diff.append('{indent}{state} {key}: {value}'.format(
-                indent=indent,
-                state=REMOVED,
-                key=node_key,
-                value=node_value.get('old_value'),
-            ))
+            diff.extend([
+                f'{indent}{ADDED} {node_key}: {node_value.get("new_value")}',
+                f'{indent}{REMOVED} {node_key}: {node_value.get("old_value")}',
+            ])
         else:
             diff.append('{indent}{state} {key}: {value}'.format(
                 indent=indent,
@@ -62,12 +52,8 @@ def _render_array(elements, depth):
     res = []
     res.append('{')
     for prop_name, prop_value in elements.items():
-        res.append('{indent}{name}: {value}'.format(
-            indent=INDENT * (depth + 3),
-            name=prop_name,
-            value=prop_value,
-        ))
-        res.append('{indent}}}'.format(
-            indent=INDENT * (depth + 1),
-        ))
+        res.extend([
+            f'{INDENT * (depth + 3)}{prop_name}: {prop_value}',
+            f'{INDENT * (depth + 1)}}}',
+        ])
     return '\n'.join(res)
