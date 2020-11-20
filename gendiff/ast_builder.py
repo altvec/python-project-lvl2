@@ -8,8 +8,7 @@ from gendiff.constants import ADDED, CHANGED, NESTED, REMOVED, UNCHANGED
 def build_ast(before, after):
     """Build AST."""
     keys = list(before.keys() | after.keys())
-    ast = {key: gen_node(key, before, after) for key in sorted(keys)}
-    return ast
+    return {key: gen_node(key, before, after) for key in sorted(keys)}
 
 
 def gen_node(key, before, after):
