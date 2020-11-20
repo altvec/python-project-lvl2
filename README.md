@@ -1,8 +1,9 @@
 # Generate diff
 
+[![Github Actions Status](https://github.com/altvec/python-project-lvl2/workflows/Python%20CI/badge.svg)](https://github.com/altvec/python-project-lvl2/actions)
+[![wemake-python-styleguide](https://img.shields.io/badge/style-wemake-000000.svg)](https://github.com/wemake-services/wemake-python-styleguide)
 [![Maintainability](https://api.codeclimate.com/v1/badges/91dea468d18ac43f14a4/maintainability)](https://codeclimate.com/github/altvec/python-project-lvl2/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/91dea468d18ac43f14a4/test_coverage)](https://codeclimate.com/github/altvec/python-project-lvl2/test_coverage)
-[![Build Status](https://travis-ci.org/altvec/python-project-lvl2.svg?branch=master)](https://travis-ci.org/altvec/python-project-lvl2)
 
 CLI utility for finding differences between configuration files.
 
