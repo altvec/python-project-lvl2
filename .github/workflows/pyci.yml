@@ -24,9 +24,11 @@ jobs:
           make install
       - name: Run linter
         run: make lint
+      - name: Run tests
+        run: make test
       - name: Publish code coverage stat
         uses: paambaati/codeclimate-action@v2.7.4
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: poetry run coverage xml
+          coverageCommand: make cc-coverage
