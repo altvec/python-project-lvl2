@@ -5,8 +5,8 @@
 import os
 
 from gendiff.ast_builder import build_ast
+from gendiff.formatters import available_formatters
 from gendiff.input_parser import parser
-from gendiff.renderers.render import render
 
 
 def read_file(file_name):
@@ -23,4 +23,7 @@ def generate_diff(first_file, second_file, output_format):
         output_format = 'plain'
     first, second = read_file(first_file), read_file(second_file)
     ast = build_ast(first, second)
-    return render(output_format, ast)
+    formatter = available_formatters.get(output_format)
+    if not formatter:
+        return 'Unsupported formatter'
+    return formatter(ast)

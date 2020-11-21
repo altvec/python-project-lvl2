@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """JSON-like string render functions."""
 
 from gendiff.constants import (
@@ -12,7 +10,7 @@ from gendiff.constants import (
 )
 
 
-def render_string(ast, depth=1):
+def render(ast, depth=1):
     """Render pseudo JSON as string."""
     diff = []
     indent = INDENT * depth
@@ -22,7 +20,7 @@ def render_string(ast, depth=1):
         if item_type == NESTED:
             diff.extend([
                 f'{indent}{UNCHANGED} {node_key}: {{',
-                render_string(item_value, depth + 2),
+                render(item_value, depth + 2),
                 f'{indent + INDENT}}}',
             ])
         elif item_type == CHANGED:

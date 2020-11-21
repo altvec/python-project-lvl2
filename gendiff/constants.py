@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """Common constants."""
 
 INDENT = '  '
