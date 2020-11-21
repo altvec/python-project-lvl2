@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """AST building functions."""
 
 from gendiff.constants import ADDED, CHANGED, NESTED, REMOVED, UNCHANGED
