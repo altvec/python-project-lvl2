@@ -20,7 +20,7 @@ pyyaml = "^5.3"
 pytest = "^6.2"
 wemake-python-styleguide = "^0.14.1"
 coverage = "^5.3"
-pytest-cov = "^2.10.1"
+pytest-cov = "^2.11.0"
 
 [tool.poetry.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
