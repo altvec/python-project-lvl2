@@ -19,8 +19,8 @@ pyyaml = "^5.4"
 [tool.poetry.dev-dependencies]
 pytest = "^6.2"
 wemake-python-styleguide = "^0.15.0"
-coverage = "^5.4"
-pytest-cov = "^2.11.1"
+coverage = "^6.0.1"
+pytest-cov = "^3.0.0"
 
 [tool.poetry.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
